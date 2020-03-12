@@ -55,10 +55,7 @@ function validateUserId({params: {id}}, res, next) {
       res.locals.user = user;
       next();
     })
-    .catch(e => {
-      console.log(e);
-      res.status(500).json({message: 'Error handling ID.'})
-    })
+    .catch(() => res.status(500).json({message: 'Error handling ID.'}));
 }
 
 function validateUser({body}, res, next) {

@@ -21,7 +21,6 @@ router.delete('/:id', validatePostId, (req, res) => {
 });
 
 router.put('/:id', validatePost, validatePostId, (req, res) => {
-  console.log(JSON.stringify(res.locals.post), JSON.stringify(res.locals.newPost));
   db.update(res.locals.post.id, res.locals.newPost)
     .then(() => res.status(200).json({...res.locals.post, ...res.locals.newPost}))
     .catch(() => res.status(500).json({message: 'Error updating post'}));
